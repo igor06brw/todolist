@@ -1,11 +1,29 @@
+import styled from 'styled-components'
 import React from 'react'
+
+const HeaderWrapper = styled.header`
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80%;
+    margin: auto;
+`
+const Container = styled.div`
+    
+`
+const LogoWrapper = styled.div`
+
+`
+const Logo = styled.h2`
+    font-size: 1.35em;
+`
+
 
 const Header = () => {
     return (
-        <header>
-            <div>
+        <HeaderWrapper>
+            <Container>
                 <div>
-                    <h2>Todolist</h2>
+                    <Logo>Todolist</Logo>
                 </div>
                 <nav>
                     <ul>
@@ -24,8 +42,8 @@ const Header = () => {
                         </li>
                     </ul>
                 </nav>
-            </div>
-        </header>
+            </Container>
+        </HeaderWrapper>
     )
 }
 

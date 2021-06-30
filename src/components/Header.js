@@ -3,12 +3,15 @@ import React from 'react'
 
 const HeaderWrapper = styled.header`
     display: flex;
-    flex-wrap: wrap;
     max-width: 80%;
     margin: auto;
+    
+    justify-content: center;
 `
 const Container = styled.div`
-    
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #888;
 `
 const LogoWrapper = styled.div`
 
@@ -17,30 +20,50 @@ const Logo = styled.h2`
     font-size: 1.35em;
 `
 
+const NavList = styled.ul`
+    display: flex;
+    padding: 6px 0 6px 2em;
+
+`
+const NavListElement = styled.li`
+    list-style-type: none;
+    padding: 1px 0.5em;
+`
+const NavListLink = styled.a`
+    text-decoration: none;
+    font-size: 0.9em;
+    color: #555;
+    transition: all .3s ease-out;
+
+    &:hover {
+        color: #A89;
+    }
+`
+
 
 const Header = () => {
     return (
         <HeaderWrapper>
             <Container>
-                <div>
+                <LogoWrapper>
                     <Logo>Todolist</Logo>
-                </div>
+                </LogoWrapper>
                 <nav>
-                    <ul>
+                    <NavList>
                         {/* AFTER ADD ROUTER-DOM, CHANGE TO { Link } */}
-                        <li>
-                            <a href="">Create Task</a>
+                        <NavListElement>
+                            <NavListLink href="">Create Task</NavListLink>
                             {/* // Assign icon "add" after implement font-awesome */}
-                        </li>
-                        <li>
-                            <a href="">Unfinished Tasks</a>
+                        </NavListElement>
+                        <NavListElement>
+                            <NavListLink href="">Unfinished Tasks</NavListLink>
                             {/* // Assign icon "time" after implement font-awesome */}
-                        </li>
-                        <li>
-                            <a href="">Finished Tasks</a>
+                        </NavListElement>
+                        <NavListElement>
+                            <NavListLink href="">Finished Tasks</NavListLink>
                             {/* // Assign icon "finish" after implement font-awesome */}
-                        </li>
-                    </ul>
+                        </NavListElement>
+                    </NavList>
                 </nav>
             </Container>
         </HeaderWrapper>

@@ -1,5 +1,6 @@
-import styled from 'styled-components'
 import React from 'react'
+
+import styled from 'styled-components'
 
 const HeaderWrapper = styled.header`
     display: flex;
@@ -11,7 +12,7 @@ const HeaderWrapper = styled.header`
 const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
-    border-bottom: 1px solid #888;
+    border-bottom: 1px solid ${props => props.theme.textColor};
 `
 const LogoWrapper = styled.div`
 
@@ -32,11 +33,12 @@ const NavListElement = styled.li`
 const NavListLink = styled.a`
     text-decoration: none;
     font-size: 0.9em;
-    color: #555;
+    color: ${props => props.theme.textColor};
     transition: all .3s ease-out;
 
     &:hover {
-        color: #A89;
+
+        color: ${props => props.theme.hoverTextColor};
     }
 `
 

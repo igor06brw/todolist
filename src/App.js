@@ -5,7 +5,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 
 const AppWrapper = styled.div`
-  background-color: ${props => props.theme.bgColor};
+  background-color: ${props => props.theme.backgroundColor};
 `
 
 function App() {

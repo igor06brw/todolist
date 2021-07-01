@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import styled, { ThemeProvider } from 'styled-components';
-import { example } from './utils/theme';
+import { lightMode } from './utils/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={example}>
+    <ThemeProvider theme={lightMode}>
       <App />
     </ThemeProvider>
   </React.StrictMode>,

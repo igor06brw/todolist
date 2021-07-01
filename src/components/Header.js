@@ -41,6 +41,12 @@ const NavListLink = styled.a`
         color: ${props => props.theme.hoverTextColor};
     }
 `
+const ButtonLink = styled(NavListLink)`
+    background-color: ${props => props.theme.buttonColor};
+    padding: 5px 10px;
+    border-radius: 1em;
+`
+
 
 
 const Header = () => {
@@ -54,7 +60,7 @@ const Header = () => {
                     <NavList>
                         {/* AFTER ADD ROUTER-DOM, CHANGE TO { Link } */}
                         <NavListElement>
-                            <NavListLink href="">Create Task</NavListLink>
+                            <ButtonLink href="">Create Task</ButtonLink>
                             {/* // Assign icon "add" after implement font-awesome */}
                         </NavListElement>
                         <NavListElement>

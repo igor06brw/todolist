@@ -3,6 +3,7 @@ const lightMode = {
     textColor: "#3f3f31",
     hoverTextColor: "#6b6a55",
     headerColor: "#2b2a19",
+    buttonColor: "#80d1dd"
 }
 
 export { lightMode }

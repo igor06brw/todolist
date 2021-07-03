@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { lightMode } from './utils/theme';
 
 ReactDOM.render(
-  <React.StrictMode>
     <ThemeProvider theme={lightMode}>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+      <React.StrictMode>
+          <App />
+      </React.StrictMode>
+    </ThemeProvider>,
   document.getElementById('root')
 );
 

@@ -34,7 +34,7 @@ const NavListLink = styled.a`
     text-decoration: none;
     font-size: 0.9em;
     color: ${props => props.theme.textColor};
-    transition: all .3s ease-out;
+    transition: color .3s ease-out;
 
     &:hover {
 
@@ -42,9 +42,20 @@ const NavListLink = styled.a`
     }
 `
 const ButtonLink = styled(NavListLink)`
-    background-color: ${props => props.theme.buttonColor};
+    position: relative;
+    background-image: ${props => props.theme.buttonColor};
+    background-size: 500%;
     padding: 5px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
     border-radius: 1em;
+    z-index: 1;
+    transition: all 3s ease-in-out;
+
+    &:hover {
+        background-position: right;
+    }
+
 `
 
 
@@ -60,15 +71,17 @@ const Header = () => {
                     <NavList>
                         {/* AFTER ADD ROUTER-DOM, CHANGE TO { Link } */}
                         <NavListElement>
-                            <ButtonLink href="">Create Task</ButtonLink>
+                            <ButtonLink href="">
+                                Create Task <i className="fas fa-plus"></i>
+                            </ButtonLink>
                             {/* // Assign icon "add" after implement font-awesome */}
                         </NavListElement>
                         <NavListElement>
-                            <NavListLink href="">Unfinished Tasks</NavListLink>
+                            <NavListLink href="">Unfinished Tasks <i className="far fa-clock"></i></NavListLink>
                             {/* // Assign icon "time" after implement font-awesome */}
                         </NavListElement>
                         <NavListElement>
-                            <NavListLink href="">Finished Tasks</NavListLink>
+                            <NavListLink href="">Finished Tasks <i className="fas fa-check"></i></NavListLink> 
                             {/* // Assign icon "finish" after implement font-awesome */}
                         </NavListElement>
                     </NavList>

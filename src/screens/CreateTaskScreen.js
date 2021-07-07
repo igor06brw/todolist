@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 
 const ModalContainer = styled.div`
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.8);
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -21,8 +21,13 @@ const ModalBox = styled.div`
     transform: translate(-50%, -50%);
     background: #fff;
     width: 50vw;
-    height: 35%;
+    max-width: 400px;
+    height: 40%;
     border-radius: 1em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `
 
 const Form = styled.form`
@@ -74,11 +79,34 @@ const Submit = styled.button`
     color: ${props => props.theme.textColor}
 `
 
+const CloseModal = styled.div`
+
+    position: absolute;
+    top: 5%;
+    right: 5%;
+`
+
+const CloseModalButton = styled.button`
+    border: 0;
+    background: none;
+    cursor: pointer;
+`
+const CloseModalIcon = styled.i`
+    font-size: 1.6em;
+    color: red;
+`
+
+
 const CreateTaskScreen = () => {
     return (
         <ModalContainer>
             <ModalBox>
                 <Heading>Create Task</Heading>
+                <CloseModal>
+                    <CloseModalButton>
+                        <CloseModalIcon className="far fa-times-circle"></CloseModalIcon>
+                    </CloseModalButton>
+                </CloseModal>
                 <Form>
                     <InputContainer>
                         <Label>Title</Label>

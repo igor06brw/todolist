@@ -41,6 +41,10 @@ const InputContainer = styled.div`
     flex-direction: column;
     padding: 20px 20px;
     width: 70%;
+
+    &:last-of-type {
+        align-items: center;
+    }
 `
 const Label = styled.label`
     padding: 0.2em 12%;
@@ -80,7 +84,6 @@ const Submit = styled.button`
 `
 
 const CloseModal = styled.div`
-
     position: absolute;
     top: 5%;
     right: 5%;

@@ -15,3 +15,5 @@ const tasks = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     }
 ]
+
+export default tasks;

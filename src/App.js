@@ -1,17 +1,21 @@
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import Header from './components/Header';
-import Main from './components/Main';
 import Footer from './components/Footer';
 import DisplayTaskScreen from './screens/DisplayTaskScreen';
+import CreateTaskScreen from './screens/CreateTaskScreen';
 
 function App() {
 
   return (
-    <div className="App">
+    <Router>
       <Header />
-      <DisplayTaskScreen />
-      <Main />
+      <div className="App">
+        <Route path="/" exact component={DisplayTaskScreen} />
+        <Route path="/createtask" component={CreateTaskScreen} />
+      </div>
       <Footer />
-    </div>
+    </Router>
   );
 }
 

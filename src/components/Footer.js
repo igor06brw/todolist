@@ -1,10 +1,26 @@
 import React from 'react'
+import styled from 'styled-components';
+
+
+const FooterWrapper = styled.footer`
+    display: flex;
+    max-width: 80%;
+    margin: auto;
+    justify-content: center;
+`
+
+const Container = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`
 
 const Footer = () => {
     return (
-        <footer>
-            Footer
-        </footer>
+        <FooterWrapper>
+            <Container>
+                Created 💗 I.B.
+            </Container>
+        </FooterWrapper>
     )
 }
 

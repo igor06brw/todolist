@@ -1,6 +1,7 @@
 import React from 'react'
 
-import styled from 'styled-components'
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
     display: flex;
@@ -30,7 +31,7 @@ const NavListElement = styled.li`
     list-style-type: none;
     padding: 1px 0.5em;
 `
-const NavListLink = styled.a`
+const NavListLink = styled(Link)`
     text-decoration: none;
     font-size: 0.9em;
     color: ${props => props.theme.textColor};
@@ -71,17 +72,17 @@ const Header = () => {
                     <NavList>
                         {/* AFTER ADD ROUTER-DOM, CHANGE TO { Link } */}
                         <NavListElement>
-                            <ButtonLink href="">
+                            <ButtonLink to="/createtask">
                                 Create Task <i className="fas fa-plus"></i>
                             </ButtonLink>
                             {/* // Assign icon "add" after implement font-awesome */}
                         </NavListElement>
                         <NavListElement>
-                            <NavListLink href="">Unfinished Tasks <i className="far fa-clock"></i></NavListLink>
+                            <NavListLink to="/">Unfinished Tasks <i className="far fa-clock"></i></NavListLink>
                             {/* // Assign icon "time" after implement font-awesome */}
                         </NavListElement>
                         <NavListElement>
-                            <NavListLink href="">Finished Tasks <i className="fas fa-check"></i></NavListLink> 
+                            <NavListLink to="/finishtask">Finished Tasks <i className="fas fa-check"></i></NavListLink> 
                             {/* // Assign icon "finish" after implement font-awesome */}
                         </NavListElement>
                     </NavList>

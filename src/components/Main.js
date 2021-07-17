@@ -1,11 +1,14 @@
 import React from 'react'
+import { useHistory } from "react-router-dom";
+
 import CreateTaskScreen from '../screens/CreateTaskScreen'
 
-const Main = () => {
+const Main = ({ children }) => {
+    console.log(useHistory)
+
     return (
         <div>
-            Main
-            <CreateTaskScreen />
+            {children}
         </div>
     )
 }

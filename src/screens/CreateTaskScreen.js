@@ -1,5 +1,8 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
+
 import styled from 'styled-components';
+
 
 const ModalContainer = styled.div`
     display:flex;
@@ -102,12 +105,15 @@ const CloseModalIcon = styled.i`
 
 
 const CreateTaskScreen = () => {
+    const history = useHistory();
+
+
     return (
         <ModalContainer>
             <ModalBox>
                 <Heading>Create Task</Heading>
                 <CloseModal>
-                    <CloseModalButton>
+                    <CloseModalButton onClick={history.goBack}>
                         <CloseModalIcon className="far fa-times-circle"></CloseModalIcon>
                     </CloseModalButton>
                 </CloseModal>

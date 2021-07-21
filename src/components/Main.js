@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 
-import CreateTaskScreen from '../screens/CreateTaskScreen'
 import DisplayTaskScreen from '../screens/DisplayTaskScreen';
 
 const Main = ({ children }) => {
     const history = useHistory();
     const [pathname, setPathname] = useState('/')
-    const [previousComponent, setPreviousComponent] = useState(<DisplayTaskScreen />)
     const [previousPathname, setPreviousPathname] = useState('/')
-    const [currentComponent, setCurrentComponent] = useState()
    
     history.listen((location) => {
         setPreviousPathname((pathname === '/createtask') ? ('/') : (pathname));

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 
 import Task from "../components/Task";
-import tasks from "../tasks";
+import { tasks } from "../tasks";
 
 const Container = styled.div`
     display: flex;
@@ -20,9 +20,11 @@ const DisplayTaskScreen = () => {
     return (
         <Container>
             <List>
-                {tasks.map((task) => (
-                    <Task task={task} />
-                ))}
+                { 
+                    tasks.map((task) => (
+                        <Task task={task} />
+                    ))
+                }
             </List>
         </Container>
     )

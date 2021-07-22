@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 
 import DisplayTaskScreen from '../screens/DisplayTaskScreen';
+import FinishTaskScreen from '../screens/FinishTaskScreen';
 
 const Main = ({ children }) => {
     const history = useHistory();
@@ -34,7 +35,7 @@ const Main = ({ children }) => {
                             children
                         }
                         {
-                            <>XD</>
+                            <FinishTaskScreen />
                         }
                     </>
                 ) : (children)

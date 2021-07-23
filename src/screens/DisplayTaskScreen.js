@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux'
 
 import Task from "../components/Task";
-import { tasks } from "../tasks";
 
 const Container = styled.div`
     display: flex;
@@ -16,7 +16,10 @@ const List = styled.ul`
     padding: 0;
 `
 
+
 const DisplayTaskScreen = () => {
+    const tasks = useSelector((state) => state.task)
+
     return (
         <Container>
             <List>

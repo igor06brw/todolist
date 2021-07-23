@@ -5,13 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
 import { lightMode } from './utils/theme';
+import { Provider } from 'react-redux';
+import store from './store';
 
 ReactDOM.render(
+  <Provider store={store}>
     <ThemeProvider theme={lightMode}>
       <React.StrictMode>
           <App />
       </React.StrictMode>
-    </ThemeProvider>,
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('root')
 );
 

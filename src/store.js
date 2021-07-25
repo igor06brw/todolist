@@ -8,10 +8,7 @@ const reducer = combineReducers({
     task: taskReducer
 })
 
-const initialState = {
-    task: tasks,
-    finishedTasks: finishedTasks
-}
+const initialState = {}
 
 const middleware = [thunk];
 

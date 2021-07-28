@@ -1,5 +1,7 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { deleteTask } from '../actions/taskActions';
 
 const Element = styled.li`
     position: relative;
@@ -32,7 +34,7 @@ const Icons = styled.div`
     & > i:first-of-type {
         color: red;
     }
-    & > i:nth-of-type(2) {
+    & > i:nth-of-type(1) {
         color: orange;
     }
     & > i:last-of-type {
@@ -40,12 +42,29 @@ const Icons = styled.div`
     }
 `
 
+const Button = styled.button`
+    background: none;
+    border: none;
+    color: red;
+`
+
 const Task = ({task}) => {
+    const dispatch = useDispatch();
+
+    const deleteHandler = (id) => {
+        if(window.confirm('Are you sure?')) {
+            dispatch(deleteTask(id))
+            console.log(id)
+        }
+    }
+
     return (
         <Element>
             <Icons>
-                <i class="far fa-trash-alt"></i>
-                <i class="far fa-edit"></i>
+                <Button onClick={() => deleteHandler(task._id)}>
+                    <i class="far fa-trash-alt"></i>
+                </Button>
+                    <i class="far fa-edit"></i>
                 <i class="far fa-check-circle"></i>
             </Icons>
             <Wrapper>

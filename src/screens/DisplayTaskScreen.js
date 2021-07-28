@@ -42,7 +42,9 @@ const DisplayTaskScreen = () => {
                         <Heading>There is non tasks</Heading>
                     ) : (
                         <List>
-                            { tasks.map((task) => (<Task task={task} />)) }
+                        { 
+                            tasks.map((task) => (<Task task={task} />)) 
+                        }
                         </List>
                     )
                 }

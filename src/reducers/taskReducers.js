@@ -12,3 +12,16 @@ export const taskReducer = (state = { tasks: []}, action) => {
             return state
     }
 }
+
+export const taskDeleteReducer = (state = {}, action) => {
+    switch (action.type) {
+        case TASK_LIST_REQUEST:
+            return { }
+        case TASK_LIST_SUCCESS:
+            return { success: true }
+        case TASK_LIST_ERROR:
+            return { error: action.payload }
+        default:
+            return state
+    }
+}

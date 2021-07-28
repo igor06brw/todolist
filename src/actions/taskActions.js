@@ -28,8 +28,8 @@ export const deleteTask = (id) => async (dispatch, getState) => {
         const { tasks } =  getState().task
         const data = tasks.filter(item => item._id !== id)
 
-
         setTimeout(() => { 
+            dispatch({type: TASK_DELETE_SUCCESS,}) 
             dispatch({
                 type: TASK_LIST_SUCCESS,
                 payload: data

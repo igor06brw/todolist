@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -66,6 +66,10 @@ const InputField = styled.input`
     &:focus {
         outline: none;
     }
+    &::placeholder {
+        color: #888888;
+        ;
+    }
 
 `
 const Heading = styled.h2`
@@ -105,8 +109,15 @@ const CloseModalIcon = styled.i`
 
 
 const CreateTaskScreen = () => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+
     const history = useHistory();
 
+    const submitHandler = (e) => {
+        e.preventDefault();
+        console.log(title, description)
+    }
 
     return (
         <ModalContainer>
@@ -117,17 +128,17 @@ const CreateTaskScreen = () => {
                         <CloseModalIcon className="far fa-times-circle"></CloseModalIcon>
                     </CloseModalButton>
                 </CloseModal>
-                <Form>
+                <Form onSubmit={submitHandler}>
                     <InputContainer>
                         <Label>Title</Label>
-                        <InputField />
+                        <InputField type="text" placeholder="Enter Title" onChange={(e) => setTitle(e.target.value)}/>
                     </InputContainer>
                     <InputContainer>
                         <Label>Description</Label>
-                        <InputField />
+                        <InputField type="text" placeholder="Enter Description"  onChange={(e) => setDescription(e.target.value)}/>
                     </InputContainer>
                     <InputContainer>
-                        <Submit>Add task</Submit>   
+                        <Submit type="submit">Add task</Submit>   
                     </InputContainer>   
                 </Form>
             </ModalBox>

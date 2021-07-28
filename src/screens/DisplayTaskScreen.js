@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux'
 
 import Task from "../components/Task";
+import { listOfTasks } from '../actions/taskActions';
 
 const Container = styled.div`
     display: flex;
@@ -18,7 +19,14 @@ const List = styled.ul`
 
 
 const DisplayTaskScreen = () => {
-    const tasks = useSelector((state) => state.task)
+    const dispatch = useDispatch()
+
+    const taskList = useSelector((state) => state.task)
+    const { tasks } = taskList
+
+    useEffect(() => {
+        dispatch(listOfTasks())
+    }, [dispatch])
 
     return (
         <Container>

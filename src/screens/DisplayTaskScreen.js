@@ -11,7 +11,6 @@ const Container = styled.div`
     margin: 0 auto;
     justify-content: center;
 `
-
 const List = styled.ul`
     list-style-type: none;
     padding: 0;
@@ -26,11 +25,10 @@ const Heading = styled.div`
 const DisplayTaskScreen = () => {
     const dispatch = useDispatch()
 
-    const taskList = useSelector((state) => state.task)
-    const { tasks } = taskList
+    const taskList = useSelector((state) => state.taskList)
 
     useEffect(() => {
-        if(tasks === []) {
+        if(taskList === []) {
             dispatch(listOfTasks())
         }
     }, [dispatch])
@@ -38,12 +36,12 @@ const DisplayTaskScreen = () => {
     return (
         <Container>
                 {
-                    (tasks.length === 0) ? (
+                    (taskList.length === 0) ? (
                         <Heading>There is non tasks</Heading>
                     ) : (
                         <List>
-                        { 
-                            tasks.map((task) => (<Task task={task} />)) 
+                        {
+                            taskList.map((task) => (<Task task={task} />)) 
                         }
                         </List>
                     )

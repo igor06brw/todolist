@@ -31,7 +31,7 @@ export const taskCreateReducer = (state = {}, action) => {
         case TASK_CREATE_REQUEST:
             return {}
         case TASK_CREATE_SUCCESS:
-            return { success: true, task: action.payload }
+            return { task: action.payload }
         case TASK_CREATE_ERROR:
             return { error: action.payload }
         default:

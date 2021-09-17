@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { createTask } from '../actions/taskActions';
 
 
 const ModalContainer = styled.div`
@@ -15,7 +17,6 @@ const ModalContainer = styled.div`
     transform: translate(-50%, -50%);
     overflow: auto;
     z-index: 1;
-    }
 `
 
 const ModalBox = styled.div`
@@ -42,6 +43,7 @@ const Form = styled.form`
 `
 const InputContainer = styled.div`
     display: flex;
+    align-items: center;
     flex-direction: column;
     padding: 20px 20px;
     width: 70%;
@@ -54,6 +56,7 @@ const Label = styled.label`
     padding: 0.2em 12%;
 `
 const InputField = styled.input`
+width: 100%;
     font-size: 1.1em;
     color: ${props => props.theme.textWhiteColor};
     text-align: center;
@@ -62,15 +65,19 @@ const InputField = styled.input`
     border-radius: 2em;
     background-color: #777;
     line-height: normal;
-    box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
-    &:focus {
-        outline: none;
-    }
-    &::placeholder {
-        color: #888888;
-        ;
-    }
-
+`
+const TextField = styled.textarea`
+    height: 4em;
+    width: 100%;
+    resize: none;
+    font-size: 1em;
+    color: ${props => props.theme.textWhiteColor};
+    text-align: center;
+    border: none;
+    border-radius: 1em;
+    background-color: #777;
+    line-height: normal;
+    padding: 0.5em
 `
 const Heading = styled.h2`
     font-size: 2em;
@@ -113,10 +120,13 @@ const CreateTaskScreen = () => {
     const [description, setDescription] = useState('');
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(title, description)
+        const id = Date.now();
+        dispatch(createTask({_id: id, title, description}));
+        history.goBack();
     }
 
     return (
@@ -135,7 +145,7 @@ const CreateTaskScreen = () => {
                     </InputContainer>
                     <InputContainer>
                         <Label>Description</Label>
-                        <InputField type="text" placeholder="Enter Description"  onChange={(e) => setDescription(e.target.value)}/>
+                        <TextField type="textarea" placeholder="Enter Description"  onChange={(e) => setDescription(e.target.value)}/>
                     </InputContainer>
                     <InputContainer>
                         <Submit type="submit">Add task</Submit>   

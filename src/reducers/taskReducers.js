@@ -1,4 +1,4 @@
-import { TASK_CREATE_ERROR, TASK_CREATE_REQUEST, TASK_CREATE_SUCCESS, TASK_LIST_ERROR, TASK_LIST_REQUEST, TASK_LIST_SUCCESS } from "../constants/taskConstants"
+import { FETCH_TASKS_REQUEST, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAILURE, CREATE_TASK, EDIT_TASK, DELETE_TASK} from "../constants/taskConstants"
 
 export const tasks = (state = [], action) => {
     switch (action.type) {
@@ -9,7 +9,7 @@ export const tasks = (state = [], action) => {
         case FETCH_TASKS_FAILURE:
 
         case CREATE_TASK:
-            
+
         case DELETE_TASK:
 
         case EDIT_TASK:

@@ -7,11 +7,9 @@ export const tasks = (state = [], action) => {
         case FETCH_TASKS_SUCCESS:
 
         case FETCH_TASKS_FAILURE:
-            
+
         case CREATE_TASK:
-            return {
-                ...state, 
-            }
+            
         case DELETE_TASK:
 
         case EDIT_TASK:

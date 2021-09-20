@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux'
 
 import Task from "../components/Task";
-import { listOfTasks } from '../actions/taskActions';
+import { fetchTasks } from '../actions/taskActions';
 
 const Container = styled.div`
     display: flex;
@@ -25,23 +25,25 @@ const Heading = styled.div`
 const DisplayTaskScreen = () => {
     const dispatch = useDispatch()
 
-    const taskList = useSelector((state) => state.taskList)
+    const tasks = useSelector((state) => state.taskReducer.tasks)
 
     useEffect(() => {
-        if(taskList === []) {
-            dispatch(listOfTasks())
+        dispatch(fetchTasks())
+        if(tasks === []) {
+            
+            dispatch(fetchTasks())
         }
     }, [dispatch])
 
     return (
         <Container>
                 {
-                    (taskList.length === 0) ? (
+                    (tasks.length === 0) ? (
                         <Heading>There is non tasks</Heading>
                     ) : (
                         <List>
                         {
-                            taskList.map((task) => (<Task task={task} />)) 
+                            tasks.map((task) => (<Task task={task} />)) 
                         }
                         </List>
                     )

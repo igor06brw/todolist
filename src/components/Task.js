@@ -54,7 +54,6 @@ const Task = ({task}) => {
     const deleteHandler = (id) => {
         if(window.confirm('Are you sure?')) {
             dispatch(deleteTask(id))
-            console.log(id)
         }
     }
 

@@ -24,30 +24,19 @@ export const fetchTasks = () => async (dispatch, getState) => {
     }
 }
 
-export const createTask = (task) => async (dispatch, getState) => {
+export const createTask = (task) => async (dispatch) => {
     try {
-        console.log(task)
         dispatch({type: CREATE_TASK, payload: task})
     } catch(error) {
         
     }
 }
 
-// export const deleteTask = (id) => async (dispatch, getState) => {
-//     try {
-//         dispatch({type: TASK_DELETE_REQUEST})
-        
-//         const tasks =  getState().taskList
-//         const data = tasks
+export const deleteTask = (id) => async (dispatch) => {
+    try {
+        dispatch({type: DELETE_TASK, payload: id})
 
-//         setTimeout(() => { 
-//             dispatch({type: TASK_DELETE_SUCCESS,}) 
-            
-//         }, 300);
-//     } catch(error) {
-//         dispatch({
-//             type: TASK_DELETE_ERROR,
-//             payload: error
-//         })
-//     }
-// }
+    } catch(error) {
+
+    }
+}

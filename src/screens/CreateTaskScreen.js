@@ -125,7 +125,7 @@ const CreateTaskScreen = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         const id = Date.now();
-        dispatch(createTask({_id: id, title, description}));
+        dispatch(createTask({_id: id, title, description, isCompleted: false}));
         history.goBack();
     }
 

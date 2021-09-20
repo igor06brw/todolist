@@ -1,13 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
-import { taskCreateReducer, taskDeleteReducer, taskListReducer } from "./reducers/taskReducers";
-import { finishedTasks, tasks } from "./tasks";
+import { taskReducer } from "./reducers/taskReducers";
 
 const reducer = combineReducers({
-    taskList: taskListReducer,
-    taskDelete: taskDeleteReducer,
-    taskCreate: taskCreateReducer
+    taskReducer,
 })
 
 const initialState = {}

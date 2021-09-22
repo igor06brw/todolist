@@ -40,3 +40,12 @@ export const deleteTask = (id) => async (dispatch) => {
 
     }
 }
+
+export const editTask = (task) => async (dispatch) => {
+    try {
+        console.log(task, 'action')
+        dispatch({ type: EDIT_TASK, payload: task})
+    } catch(error) {
+
+    }
+}

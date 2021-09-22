@@ -41,6 +41,10 @@ export const taskReducer = (state = initialState, action) => {
             }
 
         case EDIT_TASK:
+            return {
+                ...state,
+                tasks: state.tasks.map(task => task._id === action.payload._id ? {...action.payload} : task)
+            }
 
         default:
             return state

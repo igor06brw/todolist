@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { deleteTask } from '../actions/taskActions';
 
@@ -50,11 +51,21 @@ const Button = styled.button`
 
 const Task = ({task}) => {
     const dispatch = useDispatch();
+    let history = useHistory();
+
 
     const deleteHandler = (id) => {
         if(window.confirm('Are you sure?')) {
             dispatch(deleteTask(id))
         }
+    }
+
+    const editHandler = (task) => {
+        console.log(task)
+        history.push({
+            pathname: `/edit/${task._id}`,
+            state: task
+        })
     }
 
     return (
@@ -63,7 +74,9 @@ const Task = ({task}) => {
                 <Button onClick={() => deleteHandler(task._id)}>
                     <i class="far fa-trash-alt"></i>
                 </Button>
+                <Button onClick={() => editHandler(task)}>
                     <i class="far fa-edit"></i>
+                </Button>
                 <i class="far fa-check-circle"></i>
             </Icons>
             <Wrapper>

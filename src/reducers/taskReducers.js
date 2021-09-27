@@ -1,4 +1,4 @@
-import { FETCH_TASKS_REQUEST, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAILURE, CREATE_TASK, EDIT_TASK, DELETE_TASK} from "../constants/taskConstants"
+import { FETCH_TASKS_REQUEST, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAILURE, CREATE_TASK, EDIT_TASK, DELETE_TASK, COMPLETE_TASK} from "../constants/taskConstants"
 
 const initialState = {
     loading: false,
@@ -45,7 +45,12 @@ export const taskReducer = (state = initialState, action) => {
                 ...state,
                 tasks: state.tasks.map(task => task._id === action.payload._id ? {...action.payload} : task)
             }
-
+        
+        case COMPLETE_TASK:
+            return {
+                ...state,
+                tasks: state.tasks.map(task => task._id === action.payload._id ? { ...task, isCompleted: action.payload.isCompleted } : task)
+            }
         default:
             return state
     }

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { deleteTask } from '../actions/taskActions';
+import { deleteTask, completeTask } from '../actions/taskActions';
 
 const Element = styled.li`
     position: relative;
@@ -32,13 +32,13 @@ const Icons = styled.div`
         cursor: pointer;
         margin: 0 0.8em;
     }
-    & > i:first-of-type {
-        color: red;
+    & > .fa-trash-alt {
+        color: green;
     }
-    & > i:nth-of-type(1) {
+    & > .fa-edit {
         color: orange;
     }
-    & > i:last-of-type {
+    & > .fa-check-circle {
         color: green;
     }
 `
@@ -47,9 +47,11 @@ const Button = styled.button`
     background: none;
     border: none;
     color: red;
+    cursor: pointer;
 `
 
 const Task = ({task}) => {
+    const [isCompleted, setIsCompleted] = useState(true);
     const dispatch = useDispatch();
     let history = useHistory();
 
@@ -68,6 +70,10 @@ const Task = ({task}) => {
         })
     }
 
+    const completeCurrentTask = (id) => {
+        dispatch(completeTask({_id: id, isCompleted}))
+    }
+
     return (
         <Element>
             <Icons>
@@ -77,7 +83,9 @@ const Task = ({task}) => {
                 <Button onClick={() => editHandler(task)}>
                     <i class="far fa-edit"></i>
                 </Button>
-                <i class="far fa-check-circle"></i>
+                <Button onClick={() => completeCurrentTask(task._id)}>
+                    <i class="far fa-check-circle"></i>
+                </Button>
             </Icons>
             <Wrapper>
                 <h3>{task.title}</h3>

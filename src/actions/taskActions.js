@@ -1,4 +1,4 @@
-import { FETCH_TASKS_REQUEST, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAILURE, CREATE_TASK, EDIT_TASK, DELETE_TASK } from "../constants/taskConstants"
+import { FETCH_TASKS_REQUEST, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAILURE, CREATE_TASK, EDIT_TASK, DELETE_TASK, COMPLETE_TASK } from "../constants/taskConstants"
 
 export const fetchTasks = () => async (dispatch, getState) => {
     try {
@@ -45,6 +45,15 @@ export const editTask = (task) => async (dispatch) => {
     try {
         console.log(task, 'action')
         dispatch({ type: EDIT_TASK, payload: task})
+    } catch(error) {
+
+    }
+}
+
+export const completeTask = (task) => async (dispatch) => {
+    try {
+        console.log(task, 'complete task!')
+        dispatch({ type: COMPLETE_TASK, payload: task})
     } catch(error) {
 
     }

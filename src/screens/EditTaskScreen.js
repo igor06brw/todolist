@@ -117,27 +117,18 @@ const CloseModalIcon = styled.i`
 
 const EditTaskScreen = (data) => {
     const [id, setId] = useState(data.location.state._id);
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [title, setTitle] = useState(data.location.state.title);
+    const [description, setDescription] = useState(data.location.state.description);
 
     const history = useHistory();
     const dispatch = useDispatch();
 
     console.log(title, description)
 
-    const checkIfEmptyString = (title, description) => {
-        if (title === '' || description === '') {
-            console.log(data.location.state, 'checkIfEmptyString')
-            setTitle(data.location.state.title);
-            setDescription(data.location.state.description);
-        } else {
-            dispatch(editTask({_id: id, title, description}));
-        }
-    }
 
     const submitHandler = (e) => {
         e.preventDefault();
-        checkIfEmptyString(title, description);
+        dispatch(editTask({_id: id, title, description}));
         history.goBack();
     }
 

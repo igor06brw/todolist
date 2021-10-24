@@ -28,19 +28,6 @@ const Icons = styled.div`
     position: absolute;
     top: 15%;
     right: 3%;
-    & > i {
-        cursor: pointer;
-        margin: 0 0.8em;
-    }
-    & > .fa-trash-alt {
-        color: green;
-    }
-    & > .fa-edit {
-        color: orange;
-    }
-    & > .fa-check-circle {
-        color: green;
-    }
 `
 
 const Button = styled.button`
@@ -48,6 +35,19 @@ const Button = styled.button`
     border: none;
     color: red;
     cursor: pointer;
+    & > i {
+        cursor: pointer;
+        margin: 0 0.3em;
+    }
+    & > .fa-trash-alt {
+        color: red;
+    }
+    & > .fa-edit {
+        color: orange;
+    }
+    & > .fa-check-circle {
+        color: green;
+    }
 `
 
 const Task = ({task}) => {
@@ -83,9 +83,9 @@ const Task = ({task}) => {
                 <Button onClick={() => editHandler(task)}>
                     <i class="far fa-edit"></i>
                 </Button>
-                <Button onClick={() => completeCurrentTask(task._id)}>
-                    <i class="far fa-check-circle"></i>
-                </Button>
+                {
+                   (task.isCompleted === false) ? (<Button onClick={() => completeCurrentTask(task._id)}><i class="far fa-check-circle"></i></Button>) : (<a></a>)
+                } 
             </Icons>
             <Wrapper>
                 <h3>{task.title}</h3>

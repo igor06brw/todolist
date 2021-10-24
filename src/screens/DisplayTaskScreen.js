@@ -26,6 +26,7 @@ const DisplayTaskScreen = () => {
     const dispatch = useDispatch()
 
     const tasks = useSelector((state) => state.taskReducer.tasks)
+    const filteredTasks = tasks.filter(task => task.isCompleted === false)
 
     useEffect(() => {
         dispatch(fetchTasks())
@@ -43,7 +44,7 @@ const DisplayTaskScreen = () => {
                     ) : (
                         <List>
                         {
-                            tasks.map((task) => (<Task task={task} />)) 
+                            filteredTasks.map((task) => (<Task task={task} />)) 
                         }
                         </List>
                     )

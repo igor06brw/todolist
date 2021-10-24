@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 
+import { useDispatch, useSelector } from 'react-redux'
+
 import Task from "../components/Task";
-import { finishedTasks } from "../tasks";
+import { fetchTasks } from '../actions/taskActions';
+
 
 const Container = styled.div`
     display: flex;
@@ -17,11 +20,16 @@ const List = styled.ul`
 `
 
 const FinishedTaskScreen = () => {
+    const dispatch = useDispatch()
+
+    const tasks = useSelector((state) => state.taskReducer.tasks)
+    const filteredTasks = tasks.filter(task => task.isCompleted === true)
+
     return (
         <Container>
             <List>
                 { 
-                    finishedTasks.map((task) => (
+                    filteredTasks.map((task) => (
                         <Task task={task} />
                     ))
                 }

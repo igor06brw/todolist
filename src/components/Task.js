@@ -9,8 +9,11 @@ const Element = styled.li`
     background: rgb(0,172,208);
     background: linear-gradient(130deg, rgba(116,116,116,1) 0%, rgba(42,42,42,1) 100%);
     background-size: 300%;
-    padding: 10px 50px;
+    padding: 20px 50px;
     margin: 10px 0;
+    height: 200px;
+    max-width: 300px;
+    width: 80%;
     border-radius: 1em;
     transition: all 0.3s ease-in-out;
     &:hover {
@@ -19,14 +22,20 @@ const Element = styled.li`
     }
 `
 const Wrapper = styled.div`
+    display: block
     text-align: center;
-    color: ${props => props.theme.textWhiteColor};
-    font-size: 0.8em;
+    color: ${props => props.theme.textWhiteColor}; 
+
+    & > * {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
 `
 
 const Icons = styled.div`
     position: absolute;
-    top: 15%;
+    top: 10px;
     right: 3%;
 `
 
@@ -48,6 +57,13 @@ const Button = styled.button`
     & > .fa-check-circle {
         color: green;
     }
+`
+
+const Heading = styled.h3`
+    font-size: 2em;
+`
+const Paragraph = styled.p`    
+    font-size: 1em;
 `
 
 const Task = ({task}) => {
@@ -88,8 +104,8 @@ const Task = ({task}) => {
                 } 
             </Icons>
             <Wrapper>
-                <h3>{task.title}</h3>
-                <p>{task.description}</p>
+                <Heading>{task.title}</Heading>
+                <Paragraph>{task.description}</Paragraph>
             </Wrapper>
         </Element>
     )

@@ -4,12 +4,12 @@ export const fetchTasks = () => async (dispatch, getState) => {
     try {
         dispatch({type: FETCH_TASKS_REQUEST})
         
+        const data = []
         
-        const data = getState().taskReducer.tasks
-        console.log(getState())
-
-
-
+        for (let [key, value] of Object.entries(localStorage)) {
+            data.push(JSON.parse(value))
+        }
+        
         setTimeout(() => { 
             dispatch({
                 type: FETCH_TASKS_SUCCESS,
@@ -26,6 +26,7 @@ export const fetchTasks = () => async (dispatch, getState) => {
 
 export const createTask = (task) => async (dispatch) => {
     try {
+        localStorage.setItem(task._id, JSON.stringify(task))
         dispatch({type: CREATE_TASK, payload: task})
     } catch(error) {
         

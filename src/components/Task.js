@@ -11,26 +11,26 @@ const Element = styled.li`
     background-size: 300%;
     padding: 20px 50px;
     margin: 10px 0;
-    height: 200px;
+    max-height: 100px;
     max-width: 300px;
     width: 80%;
     border-radius: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     transition: all 0.3s ease-in-out;
     &:hover {
+        max-height: 250px;
         padding: 15px 50px;
         background-position: right;
+        color: red;
+        overflow: visible;
+        white-space: normal;
     }
 `
 const Wrapper = styled.div`
-    display: block
     text-align: center;
     color: ${props => props.theme.textWhiteColor}; 
-
-    & > * {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis
-    }
 `
 
 const Icons = styled.div`
@@ -60,10 +60,14 @@ const Button = styled.button`
 `
 
 const Heading = styled.h3`
-    font-size: 2em;
+    font-size: 1.1em;
+    max-height: 100px;
+    overflow: hidden;
 `
 const Paragraph = styled.p`    
     font-size: 1em;
+    max-height: 100px;
+    overflow: hidden;
 `
 
 const Task = ({task}) => {
@@ -75,6 +79,7 @@ const Task = ({task}) => {
     const deleteHandler = (id) => {
         if(window.confirm('Are you sure?')) {
             dispatch(deleteTask(id))
+            localStorage.removeItem(id.toString())
         }
     }
 

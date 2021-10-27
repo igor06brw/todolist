@@ -35,6 +35,7 @@ export const createTask = (task) => async (dispatch) => {
 
 export const deleteTask = (id) => async (dispatch) => {
     try {
+        localStorage.removeItem(id)
         dispatch({type: DELETE_TASK, payload: id})
 
     } catch(error) {

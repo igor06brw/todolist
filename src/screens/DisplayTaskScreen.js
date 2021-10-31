@@ -39,7 +39,7 @@ const DisplayTaskScreen = () => {
     return (
         <Container>
                 {
-                    (tasks.length === 0) ? (
+                    (filteredTasks.length === 0) ? (
                         <Heading>There is non tasks</Heading>
                     ) : (
                         <List>

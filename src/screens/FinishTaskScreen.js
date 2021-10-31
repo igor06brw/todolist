@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,6 +18,10 @@ const List = styled.ul`
     list-style-type: none;
     padding: 0;
 `
+const Heading = styled.div`
+    font-size: 2em;
+    padding: 2em 0em;
+`
 
 const FinishedTaskScreen = () => {
     const dispatch = useDispatch()
@@ -25,15 +29,27 @@ const FinishedTaskScreen = () => {
     const tasks = useSelector((state) => state.taskReducer.tasks)
     const filteredTasks = tasks.filter(task => task.isCompleted === true)
 
+    useEffect(() => {
+        dispatch(fetchTasks())
+        if(tasks === []) {
+            
+            dispatch(fetchTasks())
+        }
+    }, [dispatch])
+
     return (
         <Container>
-            <List>
-                { 
-                    filteredTasks.map((task) => (
-                        <Task task={task} />
-                    ))
+           {
+                    (filteredTasks.length === 0) ? (
+                        <Heading>There is non task</Heading>
+                    ) : (
+                        <List>
+                        {
+                            filteredTasks.map((task) => (<Task task={task} />)) 
+                        }
+                        </List>
+                    )
                 }
-            </List>
         </Container>
     )
 }

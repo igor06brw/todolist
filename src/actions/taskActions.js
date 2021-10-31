@@ -45,7 +45,10 @@ export const deleteTask = (id) => async (dispatch) => {
 
 export const editTask = (task) => async (dispatch) => {
     try {
-        console.log(task, 'action')
+
+        const data = JSON.parse(localStorage.getItem(task._id))
+        const newData = {...data, ...task}
+        localStorage.setItem(task._id, JSON.stringify(newData))
         dispatch({ type: EDIT_TASK, payload: task})
     } catch(error) {
 
@@ -54,7 +57,6 @@ export const editTask = (task) => async (dispatch) => {
 
 export const completeTask = (task) => async (dispatch) => {
     try {
-        console.log(task, 'complete task!')
         dispatch({ type: COMPLETE_TASK, payload: task})
     } catch(error) {
 
